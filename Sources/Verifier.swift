@@ -40,7 +40,7 @@ public struct JWTVerifier: Verifier {
             let message = "Firebase ID token has no 'sub' (subject) claim. \(verifyIdTokenDocsMessage)"
             throw VerificationError(type: .notFound(key: "sub"), message: message)
         }
-        guard subject.characters.count <= 128 else {
+        guard subject.count <= 128 else {
             let message = "Firebase ID token has 'sub' (subject) claim longer than 128 characters. \(verifyIdTokenDocsMessage)"
             throw VerificationError(type: .incorrect(key: "sub"), message: message)
         }
